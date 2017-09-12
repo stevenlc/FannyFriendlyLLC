@@ -1,0 +1,63 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container text-center">
+            <h2 class="display-3 mb-3">Welcome to <span class="title">Fanny Friendly</span>!</h2>
+            <p class="lead">Here are some photos of our customers and team.</p>
+        </div>
+        <% if (currentUser) { %>
+            <p class="lead">
+                <a class="btn btn-success btn-md float-right" href="/photos/new" role="button">Add New Photo</a>
+            </p>
+        <% } %>
+    </header>
+    
+    <div class="row text-center" style="display: flex; flex-wrap: wrap">
+        <% photos.forEach(function(photo) { %>
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <img class="card-img-top mt-3" src="<%= photo.image %>">
+                    <p class="card-text" id="photoSmallCaption"><%= photo.caption %></p>
+    			    <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#photoLargeModal">
+    			    	View Photo
+    			    </button>
+                    <% if (currentUser) { %>
+                    <a class="btn btn-warning btn-sm" href="/photos/<%= photo._id %>/edit">Edit</a>
+                    <form class="delete-form mb-0" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <!-- this is the bootstrap modal where the larger image will appear -->
+	<div class="modal fade bd-example-modal-lg" id="photoLargeModal" tabindex="-1" role="dialog" aria-labelledby="photoLargeModalTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="photoLargeModalTitle">Gallery Photo Preview</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body text-center">
+			<p class="lead" id="photoCaption"></p>
+			<img id="photoPreview" class="img-fluid">
+		</div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+</div>
+
+
+<% include ../partials/footer %>
+

@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container text-center">
+            <h2 class="display-3 mb-3">Welcome to <span class="title">Fanny Friendly</span>!</h2>
+            <p class="lead">We are a limited liability company registered in the State of Wisconsin.<br>
+            We promote and sell bidet sets to retail and wholesale markets.<br>
+            Our products are shown below, each beautifully designed and economically priced.</p>
+        </div>
+        <% if (currentUser) { %>
+            <p class="lead">
+                <a class="btn btn-success btn-md float-right" href="/products/new" role="button">Add New Product</a>
+            </p>
+        <% } %>
+    </header>
+    
+    <div class="row text-center" style="display: flex; flex-wrap: wrap">
+        <% products.forEach(function(product) { %>
+        <div class="col-md-4 col-sm-6">
+            <div class="border border-secondary rounded mb-5 p-2">
+                <h5><%= product.name %></h5>
+                <p><a href="/products/<%= product._id %>" class="btn btn-primary btn-sm">More Details</a></p>
+                <div class="border border-light py-3">
+                    <img class="img-responsive img-fluid" id="product-index-img" src="<%= product.image %>">
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

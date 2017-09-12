@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Fanny Friendly, LLC</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
+    </head>
+    <body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<a class="navbar-brand title" href="/">Fanny Friendly</a>
+
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" 
+		data-target="#navbarElements" aria-controls="navbarElements" 
+		aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+<div class="collapse navbar-collapse" id="navbarElements">
+		<ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
+			<li class="nav-item"><a class="nav-link" href="/testimonials">Testimonials</a></li>
+			<li class="nav-item"><a class="nav-link" href="/photos">Gallery</a></li>
+			<li class="nav-item"><a class="nav-link" href="/company">Company</a></li>
+			<li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+		</ul>
+        <ul class="nav navbar-nav navbar-right">
+        <% if (!currentUser) { %>
+            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+        <% } else { %>
+            <li class="nav-item"><a class="nav-link" href="#"><%= currentUser.username %></a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+        <% } %>
+        </ul>
+</div>
+</nav>
+
+<!-- Flash content -->
+<div class="container">
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+        <%= error %>
+    </div>
+    <% } %>
+    <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+        <%= success %>
+    </div>
+    <% } %>
+</div>
+

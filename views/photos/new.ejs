@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <h1>Add a New Photo (Admin Only)</h1>
+    <form action="/photos" method="POST">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="image">Image</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="image" name="photo[image]" placeholder="e.g. /images/photos/having_fun.jpg">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="caption">Caption</label>
+            <textarea class="form-control" id="caption" name="photo[caption]" rows="5" placeholder="e.g. Team bonding on a nice summer day!"></textarea>
+        </div>
+        <div class="form-group row">
+            <button class="btn btn-lg btn-success btn-block">Submit</button>
+        </div>
+    </form>
+    <a href="/photos">Go Back to List of photos</a>
+</div>
+
+<% include ../partials/footer %>
+

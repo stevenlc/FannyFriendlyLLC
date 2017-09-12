@@ -1,0 +1,16 @@
+#product-index-img {
+    max-height: 300px;
+}
+
+#product-show-img {
+    max-height: 600px;
+}
+
+.title {
+    font-family: 'Pacifico', cursive;
+}
+
+.delete-form {
+    display: inline;
+}
+

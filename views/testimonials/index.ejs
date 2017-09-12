@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container text-center">
+            <h2 class="display-3 mb-3">Welcome to <span class="title">Fanny Friendly</span>!</h2>
+            <p class="lead">See what some of our customers have said about us</p>
+        </div>
+        <% if (currentUser) { %>
+            <p class="lead">
+                <a class="btn btn-success btn-md float-right" href="/testimonials/new" role="button">Add New Testimonial</a>
+            </p>
+        <% } %>
+    </header>
+    
+    <div class="row text-justified" >
+        <% testimonials.forEach(function(testimonial) { %>
+        <div class="card col-md-9 mb-3 border border-secondary" style="float: none; margin: 0 auto">
+            <div class="card-body">
+                <div>
+                    <h4><%= testimonial.author %></h4>
+                    <% if (currentUser) { %>
+                    <a class="btn btn-warning btn-xs" href="/testimonials/<%= testimonial._id %>/edit">Edit</a>
+                    <form class="delete-form mb-0" action="/testimonials/<%= testimonial._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-xs">Delete</button>
+                    </form>
+                    <% } %>
+                </div>
+
+                <div>
+                    <p><%- testimonial.text %></p>
+                </div>
+
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+</div>
+
+<% include ../partials/footer %>

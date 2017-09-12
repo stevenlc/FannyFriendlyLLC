@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <h1>Add a New Product (Admin Only)</h1>
+    <form action="/products" method="POST">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="name">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="product[name]" placeholder="e.g. Direct Attached Bidet">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="price">Price</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="price" name="product[price]" placeholder="e.g. USD $50.00 + shipping">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="image">Image</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="image" name="product[image]" placeholder="e.g. /images/products/image_name.png">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="product[description]" rows="5" placeholder="e.g. Model number, product contents, etc."></textarea>
+        </div>
+        <div class="form-group row">
+            <button class="btn btn-lg btn-success btn-block">Submit</button>
+        </div>
+    </form>
+    <a href="/products">Go Back to List of Products</a>
+</div>
+
+<% include ../partials/footer %>
+
