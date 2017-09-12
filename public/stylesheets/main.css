@@ -1,13 +1,35 @@
+.title {
+    font-family: 'Helvetica';
+    font-weight: bold;
+}
+
+.welcome-text {
+    font-family: 'Pacifico', cursive;
+}
+
+.bd-navbar {
+    min-height: 4rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+.jumbotron {
+    background-color: #8CADDF;
+}
+
+.btn-primary {
+    background-color: #5691c8;
+}
+
+#fanny-logo-img {
+    border-left: 1px solid #8CADDF;
+}
+
 #product-index-img {
     max-height: 300px;
 }
 
 #product-show-img {
     max-height: 600px;
-}
-
-.title {
-    font-family: 'Pacifico', cursive;
 }
 
 .delete-form {

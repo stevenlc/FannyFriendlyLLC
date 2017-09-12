@@ -3,6 +3,11 @@ body {
 }
 
 .title {
+    font-family: 'Helvetica';
+    font-weight: bold;
+}
+
+.welcome-text {
     font-family: 'Pacifico', cursive;
 }
 

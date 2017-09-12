@@ -18,7 +18,7 @@ var indexRoutes = require('./routes/index'),
     photoRoutes = require('./routes/photos');
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/ffllc", {useMongoClient: true});
+mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
 seedDB();
 
 app.set("view engine", "ejs");
@@ -64,9 +64,9 @@ app.get("/company", function(req, res) {
 
 app.get("/contact", function(req, res){
     res.render("contact");
-})
+});
 
 // START SERVER
-app.listen("3000", process.env.IP, function() {
+app.listen(process.env.PORT, process.env.IP, function() {
     console.log("SERVER HAS STARTED");
 });
