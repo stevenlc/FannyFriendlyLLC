@@ -6,7 +6,8 @@
             <h3><a><%= product.name %></a></h3>
             <h5><%= product.price %></h5>
             <p class="pt-4"><%- product.description %></p>
-            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#buyNowDetails">Buy Now</button>
+            <!-- button class="btn btn-success" type="button" data-toggle="collapse" data-target="#buyNowDetails">Buy Now</button -->
+            <a class="btn btn-success" role="button" href="/contact">Buy Now - Contact Us</a>
             <div class="collapse" id="buyNowDetails">
                 <div class="card card-body mt-3 ml-3 mr-3">
                     <% include ../partials/buy %>

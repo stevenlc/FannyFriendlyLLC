@@ -21,9 +21,9 @@
                 <div class="card-body">
                     <img class="card-img-top mt-3" src="<%= photo.image %>">
                     <p class="card-text" id="photoSmallCaption"><%= photo.caption %></p>
-    			    <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#photoLargeModal">
+    			    <!-- button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#photoLargeModal">
     			    	View Photo
-    			    </button>
+                    </button -->
                     <% if (currentUser) { %>
                     <a class="btn btn-warning btn-sm" href="/photos/<%= photo._id %>/edit">Edit</a>
                     <form class="delete-form mb-0" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
