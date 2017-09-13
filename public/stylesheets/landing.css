@@ -8,7 +8,8 @@ body {
 }
 
 .welcome-text {
-    font-family: 'Pacifico', cursive;
+    /* font-family: 'Pacifico', cursive; */
+    font-family: 'Helvetica';
 }
 
 #landing-header p {

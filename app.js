@@ -66,6 +66,10 @@ app.get("/contact", function(req, res){
     res.render("contact");
 });
 
+app.get("*", function(req, res) {
+    res.redirect("/");
+});
+
 // START SERVER
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("SERVER HAS STARTED");

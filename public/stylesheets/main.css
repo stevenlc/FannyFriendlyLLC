@@ -4,7 +4,8 @@
 }
 
 .welcome-text {
-    font-family: 'Pacifico', cursive;
+    /* font-family: 'Pacifico', cursive; */
+    font-family: 'Helvetica';
 }
 
 .bd-navbar {
