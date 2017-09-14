@@ -19,7 +19,13 @@ var indexRoutes = require('./routes/index'),
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
-seedDB();
+
+// seed new data?
+if (process.env.REPOPULATE === "yes") {
+    seedDB();
+} else {
+    console.log('[SEED] Data will not be repopulated. Please set the environment variable REPOPULATE to \"yes\"');
+}
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
