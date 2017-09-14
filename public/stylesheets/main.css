@@ -8,12 +8,21 @@
     font-family: 'Helvetica';
 }
 
+#flash-content-div {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    margin-top: 4rem;
+}
+
 .bd-navbar {
     min-height: 4rem;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
 }
 
 .jumbotron {
+    margin-top: 4rem;    
     background-color: #8CADDF;
 }
 

@@ -5,8 +5,8 @@ var Testimonial = require('./models/testimonial');
 var Photo = require('./models/photo');
 
 var newUser = {
-    username: "fannyfriendly",
-    password: "fanny2017"
+    username: process.env.ADMINUSER,
+    password: process.env.ADMINPWD
 };
 
 var productData = [

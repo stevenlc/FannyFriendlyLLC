@@ -19,7 +19,9 @@ router.get("/login", function(req, res) {
 // LOG IN
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/products",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
+    successFlash: true,
+    failureFlash: true
 }), function(req, res) {
     // callback function for log in
     // code should not need to go here
