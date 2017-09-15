@@ -20,6 +20,13 @@ var indexRoutes = require('./routes/index'),
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASEURL, {useMongoClient: true});
 
+//print environment variables to console for debugging purposes
+console.log("DATABASEURL: " + process.env.DATABASEURL);
+console.log("PORT: " + process.env.PORT);
+console.log("ADMINUSER: " + process.env.ADMINUSER);
+console.log("ADMINPWD: " + process.env.ADMINPWD);
+console.log("REPOPULATE: " + process.env.REPOPULATE);
+
 // seed new data?
 if (process.env.REPOPULATE === "yes") {
     seedDB();
