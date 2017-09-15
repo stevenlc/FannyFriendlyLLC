@@ -1,8 +1,5 @@
 # This is the configuration I use for testing locally.
 # In production, the environment variables should be changed.
-# Tip: for easier development, use this command so that git no longer tracks it
-#    git update-index --assume-unchanged local-env.sh
-# to track the file again, simply use the --no-assume-unchanged flag instead
 
 export DATABASEURL="mongodb://localhost/ffllc"
 echo "DATABASEURL set"
