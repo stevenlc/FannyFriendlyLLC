@@ -24,16 +24,16 @@
 .jumbotron {
     margin-top: 4rem;    
     background: #90BAEC;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #90BAEC, #719BD5);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #90BAEC, #719BD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #90BAEC, #5081C4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #90BAEC, #5081C4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .btn-primary {
-    background-color: #5691c8;
+    background-color: #5081C4;
 }
 
 #fanny-logo-img {
-    border-left: 1px solid #8CADDF;
+    border-left: 1px solid #90BAEC;
 }
 
 #product-index-img {
