@@ -1,6 +1,6 @@
 # Fanny Friendly LLC Website
 
-This repo contains all the source code for the Fanny Friendly LLC website - www. fannyfriendly.com.
+This repo contains all the source code for the Fanny Friendly LLC website - www.fannyfriendlyllc.com.
 Fanny Friendly is a limited liability company registered in the State of Wisconsin that sells hand-held bidets.
 
 I built this website with a combination of several technologies, some of which I'll name here:
