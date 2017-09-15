@@ -9,6 +9,8 @@ I built this website with a combination of several technologies, some of which I
 - MongoDB
   - tests were run on a locally installed VM, but in production the data resides in an mlab mongodb instance
 - Bootstrap (I didn't use a robust frontend framework for this project)
+- nginx
+  - since I am hosting multiple websites on the same server, I use nginx to redirect users to the correct content
 
 The production web app / website is running on a hosted Linode server in which I also run my personal website.
 
