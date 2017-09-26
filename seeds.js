@@ -39,6 +39,11 @@ var productData = [
         price: "USD $10.00 (free shipping)",
         image: "https://i.imgur.com/nSCukii.png",
         description: "This is a personalized flashing led handheld battery fan.  It's an air cooling fan.  It comes with 3pcs AAA battery.<br><br>(Model: FF/2012/chf.1)"
+    },
+    { name: "Toilet Bowl Night Light",
+        price: "USD $5 + shipping",
+        image: "https://i.imgur.com/BRMNVc9.png",
+        description: "This product is a motion activated cordless bathroom toilet night light. It transforms your toilet bowl into a night light with eight different colors rotating. It fits any toilet. It works best if the product sensor is placed facing the toilet door. The product operates with three AAA batteries (not included).<br><br>Model: FF/2012/btnl.1"
     }
 ];
 
