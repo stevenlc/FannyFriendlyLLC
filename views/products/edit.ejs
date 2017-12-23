@@ -2,11 +2,17 @@
 
 <div class="container pt-5 mt-5">
     <h1>Edit Product (Admin Only)</h1>
-    <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+    <form action="/products/<%= product.produrl %>?_method=PUT" method="POST">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="name">Name</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="name" name="product[name]" value="<%= product.name %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="produrl">Product Unique URL</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control" id="name" name="product[produrl]" value="<%= product.produrl %>">
             </div>
         </div>
         <div class="form-group row">

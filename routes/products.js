@@ -21,8 +21,8 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
 
 
 // show one product
-router.get("/:id", function(req, res) {
-    Product.findById(req.params.id, function(err, product) {
+router.get("/:produrl", function(req, res) {
+    Product.findOne({ produrl: req.params.produrl }, function(err, product) {
         if (err || product === undefined) {
             console.log(err);
             req.flash("error", "Sorry, that product does not exist!");
@@ -49,8 +49,8 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 });
 
 // edit product form
-router.get("/:id/edit", middleware.isLoggedIn, function(req, res) {
-    Product.findById(req.params.id, function(err, product) {
+router.get("/:produrl/edit", middleware.isLoggedIn, function(req, res) {
+    Product.findOne({ produrl: req.params.produrl }, function(err, product) {
         if (err || product === undefined) {
             console.log(err);
             res.redirect("back");
@@ -61,22 +61,23 @@ router.get("/:id/edit", middleware.isLoggedIn, function(req, res) {
 });
 
 // update product
-router.put("/:id", middleware.isLoggedIn, function(req, res) {
-    Product.findByIdAndUpdate(req.params.id, req.body.product, function(err, product) {
+// this PUT request is called when Submit on the edit product page is clicked
+router.put("/:produrl", middleware.isLoggedIn, function(req, res) {
+    Product.findOneAndUpdate({ produrl: req.params.produrl }, req.body.product, function(err, product) {
         if (err || product === undefined) {
             console.log(err);
             req.flash("error", "Something went wrong. Your product was not updated");
             res.redirect("back");
         } else {
             req.flash("success", "You have successfully updated a product");
-            res.redirect("/products/" + req.params.id);
+            res.redirect("/products/" + req.params.produrl);
         }
     });
 });
 
 // delete product
-router.delete("/:id", middleware.isLoggedIn, function(req, res){
-    Product.findByIdAndRemove(req.params.id, function(err) {
+router.delete("/:produrl", middleware.isLoggedIn, function(req, res){
+    Product.findOneAndRemove({ produrl: req.params.produrl }, function(err) {
         if (err) {
             console.log(err);
             req.flash("error", "Something went wrong. Your product was not deleted.");

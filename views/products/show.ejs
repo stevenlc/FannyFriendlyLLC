@@ -15,7 +15,7 @@
             </div>
             <p class="mt-4"><a href="/products">&lt; Back to Product List</a></p>
             <% if (currentUser) { %>
-            <a class="btn btn-warning btn-xs" href="/products/<%= product._id %>/edit">Edit</a>
+            <a class="btn btn-warning btn-xs" href="/products/<%= product.produrl %>/edit">Edit</a>
             <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteFormModal">
                 Delete
             </button>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <form class="delete-form mb-0" action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                            <form class="delete-form mb-0" action="/products/<%= product.produrl %>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger btn-xs">Delete</button>
                             </form>
                         </div>

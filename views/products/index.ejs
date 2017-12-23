@@ -1,5 +1,7 @@
 <% include ../partials/header %>
 
+<!-- This page is /products -->
+
 <div class="container">
     <header class="jumbotron jumbotron-fluid pt-0 pl-0">
         <div class="container text-left pl-0 pr-0">
@@ -31,7 +33,7 @@
         <div class="col-md-4 col-sm-6">
             <div class="border border-secondary rounded mb-5 p-2">
                 <h5><%= product.name %></h5>
-                <p><a href="/products/<%= product._id %>" class="btn btn-primary btn-sm">More Details</a></p>
+                <p><a href="/products/<%= product.produrl %>" class="btn btn-primary btn-sm">More Details</a></p>
                 <div class="border border-light py-3">
                     <img class="img-responsive img-fluid" id="product-index-img" src="<%= product.image %>">
                 </div>
