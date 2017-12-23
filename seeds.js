@@ -12,37 +12,44 @@ var newUser = {
 var productData = [
     { name: "Direct Commode Attachment Bidet",
         price: "USD $69.99 + shipping",
-        image: "https://i.imgur.com/KnlbaV8.png",
+        image: "/images/products/direct_commode_bidet.png",
+        // image: "https://i.imgur.com/KnlbaV8.png",
         description: "This product set consists of a solid brass sprayer, a solid brass regulator, hose and wall mount. It connects directly to your toilet commode, using our solid brass regulator/adaptor.  The fittings are all standard to all US toilets with water tanks. It can withstand 10-15 pounds per square inch (psi) water pressure.<br><br>(Model: FF/2012/dca.1)"
     },
     { name: "Fixed to the Wall Attachment Bidet",
         price: "USD $99.99 + shipping",
-        image: "https://i.imgur.com/LNWIloE.png",
+        image: "/images/products/fixed_wall_bidet.png",
+        // image: "https://i.imgur.com/LNWIloE.png",
         description: "This is a stainless steel, chrome finish, wall mounted handheld bidet set.  Connect your hot and cold water line to our wall mounted bidet set from the water source going into your toilet.  It can withstand 10-15 pounds per square inch (psi) water pressure.<br><br>(Model: FF/2012/fwa.1)"
     },
     { name: "Elongated Sprayer Attachment Bidet",
         price: "USD $129.99 + shipping",
-        image: "https://i.imgur.com/mF0IZWA.png",
+        image: "/images/products/elongated_sprayer_bidet.png",
+        // image: "https://i.imgur.com/mF0IZWA.png",
         description: "This is a hot and cold attachment bidet set.  It's available in chrome finish.  It comes with a single control knob which regulates the water temperature and pressure.It can withstand 10-15 pounds per square inch (psi) water pressure.<br><br>(Model: FF/2012/esa.1)"
     },
     { name: "Toilet Sink Attachment Bidet",
         price: "USD $79.99 + shipping",
-        image: "https://i.imgur.com/FG3j5O0.png",
+        image: "/images/products/toilet_sink_bidet.png",
+        // image: "https://i.imgur.com/FG3j5O0.png",
         description: "This is a hot and cold attachment bidet set. It is easy to install.  It connects directly to your toilet sink faucet. It comes with a 1.5 meter flexible double lock hose. It can withstand 10-15 pounds per square inch (psi) water pressure.<br><br>(Model: FF/2012/tsa.1)"
     },
     { name: "Travel Portable Bidet",
         price: "USD $15.00 (free shipping)",
-        image: "https://i.imgur.com/zwbELiZ.png",
+        image: "/images/products/travel_bidet.png",
+        // image: "https://i.imgur.com/zwbELiZ.png",
         description: "This is a 350ml extendable long nozzle spray travel portable .  It has an anti-flow air hole in the bottom of the portable bottle bidet. Very convenient when traveling. Discreet in size, easy to put in purses.  It comes with a simple kit.<br><br>(Model: FF/2012/ptb.1)"
     },
     { name: "Customized Hand-Held Fan",
         price: "USD $10.00 (free shipping)",
-        image: "https://i.imgur.com/nSCukii.png",
+        image: "/images/products/customized_fan.png",
+        // image: "https://i.imgur.com/nSCukii.png",
         description: "This is a personalized flashing led handheld battery fan.  It's an air cooling fan.  It comes with 3pcs AAA battery.<br><br>(Model: FF/2012/chf.1)"
     },
     { name: "Toilet Bowl Night Light",
         price: "USD $5 + shipping",
-        image: "https://i.imgur.com/BRMNVc9.png",
+        image: "/images/products/toilet_bowl_light.png",
+        // image: "https://i.imgur.com/BRMNVc9.png",
         description: "This product is a motion activated cordless bathroom toilet night light. It transforms your toilet bowl into a night light with eight different colors rotating. It fits any toilet. It works best if the product sensor is placed facing the toilet door. The product operates with three AAA batteries (not included).<br><br>Model: FF/2012/btnl.1"
     }
 ];
