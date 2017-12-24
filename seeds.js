@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Product = require('./models/product');
+var ProductType = require('./models/productType');
 var User = require('./models/user');
 var Testimonial = require('./models/testimonial');
 var Photo = require('./models/photo');
@@ -12,6 +13,7 @@ var newUser = {
 var productData = [
     { name: "Direct Commode Attachment Bidet",
         produrl: "direct-commode-attachment-bidet",
+        type: 1,
         price: "USD $69.99 + shipping",
         image: "/images/products/direct_commode_bidet.png",
         // image: "https://i.imgur.com/KnlbaV8.png",
@@ -19,6 +21,7 @@ var productData = [
     },
     { name: "Fixed to the Wall Attachment Bidet",
         produrl: "fixed-to-the-wall-attachment-bidet",
+        type: 1,
         price: "USD $99.99 + shipping",
         image: "/images/products/fixed_wall_bidet.png",
         // image: "https://i.imgur.com/LNWIloE.png",
@@ -26,6 +29,7 @@ var productData = [
     },
     { name: "Elongated Sprayer Attachment Bidet",
         produrl: "elongated-sprayer-attachment-bidet",
+        type: 1,
         price: "USD $129.99 + shipping",
         image: "/images/products/elongated_sprayer_bidet.png",
         // image: "https://i.imgur.com/mF0IZWA.png",
@@ -33,6 +37,7 @@ var productData = [
     },
     { name: "Toilet Sink Attachment Bidet",
         produrl: "toilet-sink-attachment-bidet",
+        type: 1,
         price: "USD $79.99 + shipping",
         image: "/images/products/toilet_sink_bidet.png",
         // image: "https://i.imgur.com/FG3j5O0.png",
@@ -40,6 +45,7 @@ var productData = [
     },
     { name: "Travel Portable Bidet",
         produrl: "travel-portable-bidet",
+        type: 1,
         price: "USD $15.00 (free shipping)",
         image: "/images/products/travel_bidet.png",
         // image: "https://i.imgur.com/zwbELiZ.png",
@@ -47,6 +53,7 @@ var productData = [
     },
     { name: "Customized Hand-Held Fan",
         produrl: "customized-hand-held-fan",
+        type: 1,
         price: "USD $10.00 (free shipping)",
         image: "/images/products/customized_fan.png",
         // image: "https://i.imgur.com/nSCukii.png",
@@ -54,6 +61,7 @@ var productData = [
     },
     { name: "Toilet Bowl Night Light",
         produrl: "toilet-bowl-night-light",
+        type: 1,
         price: "USD $5 + shipping",
         image: "/images/products/toilet_bowl_light.png",
         // image: "https://i.imgur.com/BRMNVc9.png",
@@ -140,13 +148,49 @@ var photoData = [
     }
 ];
 
+var productTypeData = [
+    { id: 1,
+        name: "Bidets"
+    },
+    { id: 2,
+        name: "Lights"
+    },
+    { id: 3,
+        name: "Fabrics"
+    },
+    { id: 4,
+        name: "Others"
+    }
+];
+
 function seedDB() {
-    // remove all products
+    // remove and recreate all productTypes
+    ProductType.remove({}, function(err) {
+        if (err) {
+            console.log("[SEED] Could not remove productTypes");
+            console.log(err);
+        } else {
+            console.log("[SEED] All productTypes removed.");
+            // add new productTypes
+            productTypeData.forEach(function(productType) {
+                ProductType.create(productType, function(err, productType) {
+                    if (err) {
+                        console.log(err); 
+                    } else {
+                        console.log("[SEED] productType " + productType.id + ": " + productType.name + " added.");
+                    }
+                }); 
+            });
+        } 
+    });
+
+    // remove and recreate all products
     Product.remove({}, function(err) {
         if (err) {
             console.log("[SEED] Could not remove products");
             console.log(err);
         } else {
+            console.log("[SEED] All products removed.");
             // add new products (seed data)
             productData.forEach(function(product) {
                 Product.create(product, function(err, product) {
@@ -160,7 +204,7 @@ function seedDB() {
         }
     });
 
-    // remove all users
+    // remove and recreate all users
     User.remove({}, function(err) {
         if (err){
             console.log("[SEED] Something went wrong with deleting all Users."); 
@@ -180,7 +224,7 @@ function seedDB() {
     });
 
 
-    // remove all testimonials
+    // remove and recreate all testimonials
     Testimonial.remove({}, function(err) {
         if(err){
             console.log("[SEED] Something went wrong with deleting all Testimonials."); 
@@ -199,7 +243,7 @@ function seedDB() {
         }
     });
 
-    // remove all photos
+    // remove and recreate all photos
     Photo.remove({}, function(err) {
         if(err){
             console.log(err);
