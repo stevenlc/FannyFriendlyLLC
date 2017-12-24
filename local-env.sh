@@ -9,13 +9,19 @@ export ADMINUSER="a"
 echo "ADMINUSER set"
 export ADMINPWD="a"
 echo "ADMINPWD set"
-export REPOPULATE="no"
+export REPOPULATE="yes"
 echo "REPOPULATE set"
 
 echo ""
 
-echo "DATABASEURL:" $DATABASEURL
-echo "PORT:" $PORT
-echo "ADMINUSER:" $ADMINUSER
-echo "ADMINPWD:" $ADMINPWD
-echo "REPOPULATE:" $REPOPULATE
+cat > env-variables.txt << EOF
+
+DATABASEURL: $DATABASEURL
+PORT: $PORT
+ADMINUSER: $ADMINUSER
+ADMINPWD: $ADMINPWD
+REPOPULATE: $REPOPULATE
+
+EOF
+
+cat env-variables.txt
