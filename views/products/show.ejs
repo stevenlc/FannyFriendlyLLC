@@ -1,25 +1,33 @@
 <% include ../partials/header %>
 
-<div class="container pt-5 mt-5">
-    <div class="row">
-        <div class="caption col-md-7">
-            <h3><a><%= product.name %></a></h3>
-            <h5><%= product.price %></h5>
-            <p class="pt-4"><%- product.description %></p>
-            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#buyNowDetails">Buy Now</button>
-            <!-- a class="btn btn-success" role="button" href="/contact">Buy Now - Contact Us</a -->
-            <div class="collapse" id="buyNowDetails">
-                <div class="card card-body mt-3 ml-3 mr-3">
-                    <% include ../partials/buy %>
+<!-- This page is /services/service-name -->
+<!-- This page has access to a single service item -->
+
+<div class="container">
+    <header class="jumbotron jumbotron-fluid pt-0 pl-0">
+        <div class="container text-left pl-0 pr-0">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="/images/fannyfriendly-logo.png" id="fanny-logo-img" class="img-fluid d-none d-md-block">
+                </div>
+                <div class="col-md-8">
+                    <h2 class="display-4 mb-3 mt-5">
+                        <span class="title">Fanny Friendly, LLC</span>
+                    </h2>
+                    <!-- h3 class="text-center">(A hand-held bidet company)</h3 -->
                 </div>
             </div>
-            <p class="mt-4"><a href="/products">&lt; Back to Product List</a></p>
-            <% if (currentUser) { %>
-            <a class="btn btn-warning btn-xs" href="/products/<%= product.produrl %>/edit">Edit</a>
+            <!--hr class="text-center"-->
+            <p class="lead text-center mt-2">We are a limited liability company registered in the State of Wisconsin.<br>
+            Our <%= product.name %> products are shown here.</p>
+        </div>
+        <% if (currentUser) { %>
+            <p class="lead">
+            <a class="btn btn-success btn-md float-right" href="/products/<%= product.url %>/new" role="button">Add New <%= product.name %> Item</a>
+            <a class="btn btn-warning btn-xs" href="/products/<%= product.url %>/edit">Edit <%= product.name %> Product</a>
             <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteFormModal">
-                Delete
+                Delete <%= product.name %> Product
             </button>
-
             <div class="modal fade" id="deleteFormModal" tabindex="-1" role="dialog" aria-labelledby="deleteFormLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -35,22 +43,35 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <form class="delete-form mb-0" action="/products/<%= product.produrl %>?_method=DELETE" method="POST">
-                                <button class="btn btn-danger btn-xs">Delete</button>
+                            <form class="delete-form mb-0" action="/products/<%= product.url %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger btn-xs">Delete <%= product.name %> Product</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <% } %>
-        </div>
+            </p>
+        <% } %>
+    </header>
 
-        <div class="col-md-5">
-            <img src="<%= product.image %>" class="img-fluid" id="product-show-img">
+    <p><a href="/products">&lt; back to list of all products</a></p>
+
+    <% if (currentUser) { %>
+    <% } %>
+
+    <div class="row text-center" style="display: flex; flex-wrap: wrap">
+        <% product["items"].forEach(function(item) { %>
+        <div class="col-md-3 col-sm-6">
+            <div class="border border-secondary rounded mb-5 p-2">
+                <h5><%= item.name %></h5>
+                <p><a href="/products/<%= product.url %>/<%= item.url %>" class="btn btn-primary btn-sm">Show More</a></p>
+                <div class="border border-light py-3">
+                    <img class="img-responsive img-fluid" id="product-index-img" src="<%= item.image %>">
+                </div>
+            </div>
         </div>
+        <% }); %>
     </div>
 </div>
-
-
 
 <% include ../partials/footer %>

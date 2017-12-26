@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<!-- This page is /products -->
+<!-- This page is /services -->
 
 <div class="container">
     <header class="jumbotron jumbotron-fluid pt-0 pl-0">
@@ -22,19 +22,19 @@
         </div>
         <% if (currentUser) { %>
             <p class="lead">
-                <a class="btn btn-success btn-md float-right" href="/products/new" role="button">Add New Product</a>
+                <a class="btn btn-success btn-md float-right" href="/services/new" role="button">Add New Service</a>
             </p>
         <% } %>
     </header>
     
     <div class="row text-center" style="display: flex; flex-wrap: wrap">
-        <% products.forEach(function(product) { %>
+        <% services.forEach(function(service) { %>
         <div class="col-md-3 col-sm-6">
             <div class="border border-secondary rounded mb-5 p-2">
-                <h5><%= product.name %></h5>
-                <p><a href="/products/<%= product.url %>" class="btn btn-primary btn-sm">Show More</a></p>
+                <h5><%= service.name %></h5>
+                <p><a href="/services/<%= service.url %>" class="btn btn-primary btn-sm">More Details</a></p>
                 <div class="border border-light py-3">
-                    <img class="img-responsive img-fluid" id="product-index-img" src="<%= product.image %>">
+                    <img class="img-responsive img-fluid" id="product-index-img" src="<%= service.image %>">
                 </div>
             </div>
         </div>

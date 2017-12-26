@@ -14,7 +14,9 @@ var User = require('./models/user');
 // require routes
 var indexRoutes = require('./routes/index'),
     productRoutes = require('./routes/products'),
+    itemRoutes = require('./routes/items'),
     testimonialRoutes = require('./routes/testimonials'),
+    servicesRoutes = require('./routes/services'),
     photoRoutes = require('./routes/photos');
 
 mongoose.Promise = global.Promise;
@@ -64,9 +66,15 @@ app.use(function(req, res, next){
 // ==========
 
 app.use("/", indexRoutes);
+
 app.use("/products", productRoutes);
+app.use("/products/:producturl", itemRoutes);
+
 app.use("/testimonials", testimonialRoutes);
+
 app.use("/photos", photoRoutes);
+
+app.use("/services", servicesRoutes);
 
 app.get("/gallery", function(req, res){
     res.redirect("/photos");

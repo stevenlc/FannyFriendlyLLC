@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+
+<!-- This page is /services/service-name/edit -->
+<!-- It has access to service -->
+
+<div class="container pt-5 mt-5">
+    <h1>Edit Service (Admin Only)</h1>
+    <form action="/sercice/<%= service.url %>?_method=PUT" method="POST">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="name">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="service[name]" value="<%= service.name %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="url">Service Unique URL</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control" id="url" name="service[url]" value="<%= service.url %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="price">Price</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="price" name="service[price]" value="<%= service.price %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="image">Image</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="image" name="service[image]" value="<%= service.image %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="service[description]" rows="5"><%- service.description %></textarea>
+        </div>
+        <div class="form-group row">
+            <button class="btn btn-lg btn-success btn-block">Submit</button>
+        </div>
+    </form>
+    <a href="/services">&lt; back to list of services</a>
+</div>
+
+<% include ../partials/footer %>
+

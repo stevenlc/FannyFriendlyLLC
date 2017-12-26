@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+
+<!-- This is the /services/service-name/new page -->
+<!-- This has access to a single service -->
+
+<div class="container pt-5 mt-5">
+    <h1>Add a New Service (Admin Only)</h1>
+    <form action="/services" method="POST">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="name">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="service[name]" placeholder="e.g. Plumbing">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="url">Service Unique URL</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="url" name="service[url]" placeholder="e.g. plumbing">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="price">Price</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="price" name="service[price]" placeholder="e.g. Starting at USD $50.00">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="image">Image</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="image" name="service[image]" placeholder="e.g. https://i.imgur.com/BRMNVc9.png">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="service[description]" rows="5" placeholder="e.g. Description of service"></textarea>
+        </div>
+        <div class="form-group row">
+            <button class="btn btn-lg btn-success btn-block">Submit</button>
+        </div>
+    </form>
+    <a href="/services">&lt; back to list of services</a>
+</div>
+
+<% include ../partials/footer %>
+

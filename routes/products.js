@@ -1,31 +1,33 @@
 var express = require('express');
 var router = express.Router();
 var Product = require('../models/product');
+var Item = require('../models/item');
 var middleware = require('../middleware');
 
-// show all products page
+// INDEX - show all products
 router.get("/", function(req, res) {
     Product.find({}, function(err, products) {
         if (err) {
+            req.flash("error", "Sorry, something went wrong when fetching the list of products.");
             console.log(err);
         } else {
             res.render("products/index", { products: products });
         }
-    });
+    }).sort({ name: "asc" });
 });
 
-// new product form
+// NEW product form
 router.get("/new", middleware.isLoggedIn, function(req, res) {
     res.render("products/new");
 });
 
 
-// show one product
-router.get("/:produrl", function(req, res) {
-    Product.findOne({ produrl: req.params.produrl }, function(err, product) {
+// SHOW - details for one product
+router.get("/:producturl", function(req, res) {
+    Product.findOne({ url: req.params.producturl }).populate("items").exec(function(err, product) {
         if (err || product === undefined) {
             console.log(err);
-            req.flash("error", "Sorry, that product does not exist!");
+            req.flash("error", "Sorry, the product you selected does not exist!");
             res.redirect("/products");
         } else {
             res.render("products/show", { product: product }); 
@@ -33,7 +35,7 @@ router.get("/:produrl", function(req, res) {
     });
 });
 
-// create new product
+// CREATE - new product form
 router.post("/", middleware.isLoggedIn, function(req, res) {
     var newProduct = req.body.product;
     Product.create(newProduct, function(err, product) {
@@ -48,9 +50,9 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
     });
 });
 
-// edit product form
-router.get("/:produrl/edit", middleware.isLoggedIn, function(req, res) {
-    Product.findOne({ produrl: req.params.produrl }, function(err, product) {
+// EDIT product form
+router.get("/:producturl/edit", middleware.isLoggedIn, function(req, res) {
+    Product.findOne({ url: req.params.producturl }, function(err, product) {
         if (err || product === undefined) {
             console.log(err);
             res.redirect("back");
@@ -60,33 +62,48 @@ router.get("/:produrl/edit", middleware.isLoggedIn, function(req, res) {
     });
 });
 
-// update product
-// this PUT request is called when Submit on the edit product page is clicked
-router.put("/:produrl", middleware.isLoggedIn, function(req, res) {
-    Product.findOneAndUpdate({ produrl: req.params.produrl }, req.body.product, function(err, product) {
+// UPDATE product - called when the Submit button is clicked on EDIT page
+router.put("/:producturl", middleware.isLoggedIn, function(req, res) {
+    Product.findOneAndUpdate({ url: req.params.producturl }, req.body.product, function(err, product) {
         if (err || product === undefined) {
             console.log(err);
             req.flash("error", "Something went wrong. Your product was not updated");
             res.redirect("back");
         } else {
             req.flash("success", "You have successfully updated a product");
-            res.redirect("/products/" + req.params.produrl);
+            res.redirect("/products/" + req.params.producturl);
         }
     });
 });
 
-// delete product
-router.delete("/:produrl", middleware.isLoggedIn, function(req, res){
-    Product.findOneAndRemove({ produrl: req.params.produrl }, function(err) {
+// DELETE  product - called when Delete button is hit on SHOW  page
+router.delete("/:producturl", middleware.isLoggedIn, function(req, res){
+    Product.findOne({ url: req.params.producturl}, function(err, product) {
         if (err) {
             console.log(err);
             req.flash("error", "Something went wrong. Your product was not deleted.");
             res.redirect("/products");
         } else {
-            req.flash("success", "You successfully deleted a product.");
-            res.redirect("/products"); 
+            if (product.items.length > 0) {
+                // this means there are existing Items in the Product 
+                // admin must delete these Items first before we allow Product
+                // to be deleted
+                req.flash("error", "You must delete existing items first before a DELETE product operation will be permitted.");
+                res.redirect("back");
+            } else {
+                Product.findOneAndRemove({ url: req.params.producturl }, function(err) {
+                    if (err) {
+                        console.log(err);
+                        req.flash("error", "Something went wrong. Your product was not deleted.");
+                        res.redirect("/products/" + req.params.producturl);
+                    } else {
+                        req.flash("success", "You successfully deleted a product.");
+                        res.redirect("/products"); 
+                    }
+                });
+            }
         }
-    });
+    })
 });
 
 module.exports = router;

@@ -1,12 +1,16 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    passportLocalMongoose = require('passport-local-mongoose');
 
 var productSchema = new mongoose.Schema({
     name: String,
-    produrl: String,
-    type: Number,
-    price: String,
+    url: String,
     image: String,
-    description: String
+    items: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Item"
+        } 
+    ]
 });
 
 module.exports = mongoose.model("Product", productSchema);
