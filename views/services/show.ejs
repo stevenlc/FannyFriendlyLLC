@@ -9,11 +9,17 @@
             <h3><a><%= service.name %></a></h3>
             <h5><%= service.price %></h5>
             <p class="pt-4"><%- service.description %></p>
-            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#buyNowDetails">Buy Now</button>
+            <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#buyNowDetails">Get a Quote</button>
             <!-- a class="btn btn-success" role="button" href="/contact">Buy Now - Contact Us</a -->
             <div class="collapse" id="buyNowDetails">
                 <div class="card card-body mt-3 ml-3 mr-3">
-                    <% include ../partials/avail %>
+                    <p>
+                        Interested in availing of this service?<br>
+                        Email or call us today!</p>
+                    <p>
+                        <a href="mailto:info@fannyfriendlyllc.com">info@fannyfriendlyllc.com</a><br>
+                        <a>+1 (920) 475-7816</a>
+                    </p>                
                 </div>
             </div>
             <p class="mt-4"><a href="/services">&lt; see all services</a></p>

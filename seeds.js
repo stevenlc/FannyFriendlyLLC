@@ -16,21 +16,25 @@ var productData = [
         name: "Bidets",
         url: "bidets",
         image: "/images/products/bidets/bidets_main.jpg",
+        description: "Bidets are good.<br>Our bidet products are shown here."
     },
     {
         name: "Lights",
         url: "lights",
-        image: "/images/products/lights/lights_main.jpg"
+        image: "/images/products/lights/lights_main.jpg",
+        description: "Lights illuminate.<br>Our lights products are shown here."
     },
     { 
         name: "Fabrics",
         url: "fabrics",
-        image: "/images/products/fabrics/fabrics_main.jpg"
+        image: "/images/products/fabrics/fabrics_main.jpg",
+        description: "We sell a wide selection of fabrics.<br>Our fabrics products are shown here."
     },
     { 
-        name: "Other",
+        name: "Others",
         url: "others",
-        image: "/images/products/others/others_main.jpg"
+        image: "/images/products/others/others_main.jpg",
+        description: "We sell many more items.<br>Miscellaneous other products we sell are shown here."
     }
 ];
 
@@ -173,6 +177,14 @@ var photoData = [
     }
 ];
 
+var servicesData = [
+    { name: "Example Service",
+        url: "example-service",
+        price: "Starting at USD $60.00",
+        image: "/images/products/white-sandy-beach.jpg",
+        description: "This is an example of a service. This service does not exist yet."
+    }
+];
 
 function populateItemsData(producturl) {
     switch(producturl) {
@@ -241,6 +253,15 @@ function seedDB() {
             console.log("[SEED] All services removed.");
             // create new services
             // TO DO
+            servicesData.forEach(function(t) {
+                Service.create(t, function(err, service) {
+                    if(err){
+                        console.log(err); 
+                    } else {
+                        console.log("[SEED] Service " + service.name + " created."); 
+                    }
+                });
+            });
         }
     });
 

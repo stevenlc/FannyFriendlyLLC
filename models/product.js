@@ -5,6 +5,7 @@ var productSchema = new mongoose.Schema({
     name: String,
     url: String,
     image: String,
+    description: String,
     items: [
         {
             type: mongoose.Schema.Types.ObjectId,

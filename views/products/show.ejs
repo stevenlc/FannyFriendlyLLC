@@ -19,7 +19,8 @@
             </div>
             <!--hr class="text-center"-->
             <p class="lead text-center mt-2">We are a limited liability company registered in the State of Wisconsin.<br>
-            Our <%= product.name %> products are shown here.</p>
+                <%- product.description %>
+            </p> 
         </div>
         <% if (currentUser) { %>
             <p class="lead">
@@ -54,14 +55,14 @@
         <% } %>
     </header>
 
-    <p><a href="/products">&lt; back to list of all products</a></p>
+    <p><a href="/products">&lt; see all products</a></p>
 
     <% if (currentUser) { %>
     <% } %>
 
     <div class="row text-center" style="display: flex; flex-wrap: wrap">
         <% product["items"].forEach(function(item) { %>
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-4 col-sm-6">
             <div class="border border-secondary rounded mb-5 p-2">
                 <h5><%= item.name %></h5>
                 <p><a href="/products/<%= product.url %>/<%= item.url %>" class="btn btn-primary btn-sm">Show More</a></p>
