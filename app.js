@@ -16,7 +16,7 @@ var indexRoutes = require('./routes/index'),
     productRoutes = require('./routes/products'),
     itemRoutes = require('./routes/items'),
     testimonialRoutes = require('./routes/testimonials'),
-    servicesRoutes = require('./routes/services'),
+//    servicesRoutes = require('./routes/services'),
     photoRoutes = require('./routes/photos');
 
 mongoose.Promise = global.Promise;
@@ -74,7 +74,7 @@ app.use("/testimonials", testimonialRoutes);
 
 app.use("/photos", photoRoutes);
 
-app.use("/services", servicesRoutes);
+// app.use("/services", servicesRoutes);
 
 app.get("/gallery", function(req, res){
     res.redirect("/photos");

@@ -2,6 +2,7 @@
 # In production, the environment variables should be changed.
 
 export DATABASEURL="mongodb://localhost/ffllc"
+# export DATABASEURL="mongodb://steven:camina@ds133964.mlab.com:33964/ffllc"
 echo "DATABASEURL set"
 export PORT="3000"
 echo "PORT set"

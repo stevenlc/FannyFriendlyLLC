@@ -15,26 +15,26 @@ var productData = [
     { 
         name: "Bidets",
         url: "bidets",
-        image: "/images/products/bidets/bidets_main.jpg",
-        description: "Bidets are good.<br>Our bidet products are shown here."
+        image: "/images/products/bidets/bidets_main.png",
+        description: "Our Fanny bidet is committed to challenging the status quo of the constant usage of toilet paper."
     },
     {
         name: "Lights",
         url: "lights",
-        image: "/images/products/lights/lights_main.jpg",
-        description: "Lights illuminate.<br>Our lights products are shown here."
+        image: "/images/products/lights/lights_main.png",
+        description: "Convenience of use of our energy saving motion sensor lights improves your home."
     },
     { 
         name: "Fabrics",
         url: "fabrics",
         image: "/images/products/fabrics/fabrics_main.jpg",
-        description: "We sell a wide selection of fabrics.<br>Our fabrics products are shown here."
+        description: "Our fabrics are made of various strengths and degrees of durability."
     },
     { 
-        name: "Others",
-        url: "others",
-        image: "/images/products/others/others_main.jpg",
-        description: "We sell many more items.<br>Miscellaneous other products we sell are shown here."
+        name: "Novelty",
+        url: "novelty",
+        image: "/images/products/others/novelty_main.png",
+        description: "Our novelty items are for keeps."
     }
 ];
 
@@ -88,7 +88,7 @@ var lightsItemsData = [
 
 var fabricsItemsData = [];
 
-var othersItemsData = [
+var noveltyItemsData = [
      { name: "Customized Hand-Held Fan",
         url: "customized-hand-held-fan",
         price: "USD $10.00 (free shipping)",
@@ -194,8 +194,8 @@ function populateItemsData(producturl) {
             return lightsItemsData;
         case "fabrics":
             return fabricsItemsData;
-        case "others":
-            return othersItemsData;
+        case "novelty":
+            return noveltyItemsData;
     }
 }
 
