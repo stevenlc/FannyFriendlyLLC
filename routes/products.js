@@ -18,7 +18,7 @@ router.get("/", function(req, res) {
 
 // NEW product form
 router.get("/new", middleware.isLoggedIn, function(req, res) {
-    res.render("products/new");
+    res.render("products/new", { errorMessage: ''});
 });
 
 
@@ -44,24 +44,34 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
         } else if (product === null) {
             // this means the url does not already exist
             // this is good
-            // create the product
-            Product.create(req.body.product, function(err, product) {
-                if (err || product === undefined) {
-                    console.log(err);
-                    res.redirect("back");
-                } else {
-                    console.log("Product " + product.name + " added.");
-                    req.flash("success", "You have successfully added a new product.");
-                    res.redirect("/products");
-                }
-            });
+            // check if the product url fits naming format requirements
+            var producturl = req.body.product.url;
+            if ( producturl == '' || producturl.indexOf(' ') !== -1 || /[A-Z]/.test(producturl) ) {
+                // this means the product url did not fit proper format requirements.
+                console.log("USER ERROR: Product URL either has a space or capital letter.");
+                res.render("products/new", {  product: req.body.product, 
+                    errorMessage: "The product's URL should not have spaces or capital letters. Please enter a different URL." });
+            } else {
+                // create the product
+                Product.create(req.body.product, function(err, product) {
+                    if (err || product === undefined) {
+                        console.log(err);
+                        res.redirect("back");
+                    } else {
+                        console.log("Product " + product.name + " added.");
+                        req.flash("success", "You have successfully added a new product.");
+                        res.redirect("/products");
+                    }
+                });
+            }
         } else {
             // this means the product url exists
             // this is bad
             // show error and tell user to change url
-            console.log("USER ERROR: The product URL already exists. It needs to be changed.");
+            console.log("USER ERROR: The product URL already exists.");
             console.log(req.body.product)
-            res.render("products/new", { product: req.body.product, renew: true});
+            res.render("products/new", { product: req.body.product, 
+                errorMessage: "The product's URL already exists for another product. Please enter a different product URL."});
         }
     });
 });

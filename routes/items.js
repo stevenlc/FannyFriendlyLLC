@@ -11,7 +11,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
         if (err || product === undefined) {
             console.log(err); 
         } else {
-            res.render("items/new", { product: product}); 
+            res.render("items/new", { product: product, errorMessage: '' }); 
         }
     });
 });
@@ -44,27 +44,37 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
                 } else if (item === null) {
                     // this means the item url does not exist 
                     // this is good.
-                    // create the item
                     // create new item
-                    Item.create(req.body.item, function(err, item) {
-                        if (err) {
-                            console.log(err); 
-                        } else {
-                            // add item to product
-                            product.items.push(item);
-                            product.save();
-                            console.log("Item " + item.name + " added to " + product.name);
-                            console.log(item);
-                            req.flash("Successfully created item!");
-                            res.redirect("/products/" + product.url);
-                        } 
-                    });
+                    // do some checks on the url to see if it's in the correct format
+                    var itemurl = req.body.item.url;
+                    if ( itemurl == '' || itemurl.indexOf(' ') !== -1 || /[A-Z]/.test(itemurl) ) {
+                        // this means the item url did not fit proper format requirements.
+                        console.log("USER ERROR: Item URL either has a space or capital letter.");
+                        res.render("items/new", {  product: product, item: req.body.item, 
+                            errorMessage: "The item's URL should not have spaces or capital letters. Please enter a different URL." });
+                    } else {
+                        // create the item
+                        Item.create(req.body.item, function(err, item) {
+                            if (err) {
+                                console.log(err); 
+                            } else {
+                                // add item to product
+                                product.items.push(item);
+                                product.save();
+                                console.log("Item " + item.name + " added to " + product.name);
+                                console.log(item);
+                                req.flash("Successfully created item!");
+                                res.redirect("/products/" + product.url);
+                            } 
+                        });
+                    }
                 } else {
                     // this means the item url exists
                     // if so, this is bad.
                     // redirect the user back and ask them to change it
-                    console.log("USER ERROR: The item URL already exists. It needs to be changed.");
-                    res.render("items/new", {  product: product, item: req.body.item, renew: true});
+                    console.log("USER ERROR: item URL already exists.");
+                    res.render("items/new", {  product: product, item: req.body.item, 
+                        errorMessage: "The item's URL already exists for another item. Please enter a different item URL." });
                 }
             });
         }
@@ -113,6 +123,7 @@ router.delete("/:itemurl", middleware.isLoggedIn, function(req, res){
                     if (err) console.log(err);
                 });
             req.flash("success", "You successfully deleted an item.");
+            console.log("Item " + req.params.itemurl + " deleted.");
             res.redirect("/products/" + req.params.producturl); 
         }
     });

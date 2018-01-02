@@ -1,15 +1,15 @@
 <% include ../partials/header %>
 
 <!-- This is the /products/product-name/new page -->
-<!-- This has access to a single product, item, and a renew boolean -->
+<!-- This has access to a single product, item, and an errorMessage -->
 
-<% if (renew === undefined) { var renew = false; } else { if (renew) { %>
+<% if (errorMessage && errorMessage.length > 0) { var showValues = true; %>
 <div class="text-center" id="flash-content-div">
     <div class="alert alert-danger" role="alert">
-        The item URL you specified already exists. Please specify a different URL.
+        <%= errorMessage %>
     </div>
 </div>
-<% } } %>
+<% } else { var showValues = false; } %>
 
 <div class="container pt-5 mt-5">
     <h1>Add a New Item (Admin Only)</h1>
@@ -18,33 +18,33 @@
             <label class="col-sm-2 col-form-label" for="name">Name</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="name" name="item[name]" placeholder="e.g. Direct Attached Bidet" 
-                    <% if (renew) { %> value="<%= item.name %>" <% } %> required>
+                    <% if (showValues){%>value="<%= item.name %>"<%}%> required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="url">Item Unique URL</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="url" name="item[url]" placeholder="e.g. direct-attached-bidet"
-                    <% if (renew) { %> value="<%= item.url %>" <% } %> required>
+                    <% if (showValues){%>value="<%= item.url %>"<%}%> required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="price">Price</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="price" name="item[price]" placeholder="e.g. USD $50.00 + shipping"
-                    <% if (renew) { %> value="<%= item.price %>" <% } %> >
+                    <% if (showValues){%>value="<%= item.price %>"<%}%> >
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="image">Image</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="image" name="item[image]" placeholder="e.g. https://i.imgur.com/BRMNVc9.png"
-                    <% if (renew) { %> value="<%= item.image %>" <% } %> >
+                    <% if (showValues){%>value="<%= item.image %>"<%}%> >
             </div>
         </div>
         <div class="form-group row">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="item[description]" rows="5" placeholder="e.g. Model number, product contents, etc."><% if (renew) { %> <%- item.description %> <% } %></textarea>
+            <textarea class="form-control" id="description" name="item[description]" rows="5" placeholder="e.g. Model number, product contents, etc."><% if (showValues){%><%- item.description %><%}%></textarea>
         </div>
         <div class="form-group row">
             <button class="btn btn-lg btn-success btn-block">Submit</button>
