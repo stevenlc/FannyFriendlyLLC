@@ -42,36 +42,31 @@ var bidetItemsData = [
     { name: "Direct Commode Attachment Bidet",
         url: "direct-commode-attachment-bidet",
         price: "USD $69.99 + shipping",
-        image: "/images/products/bidets/direct_commode_bidet.png",
-        // image: "https://i.imgur.com/KnlbaV8.png",
+        image: "https://i.imgur.com/bJT2Q3d.png",
         description: "This product set consists of a solid brass sprayer, a solid brass regulator, hose and wall mount. It connects directly to your toilet commode, using our solid brass regulator/adaptor.  The fittings are all standard to all US toilets with water tanks. It can withstand 10-15 pounds per square inch (psi) water pressure.<br><br>(Model: FF/2012/dca.1)"
     },
     { name: "Fixed to the Wall Attachment Bidet",
         url: "fixed-to-the-wall-attachment-bidet",
         price: "USD $99.99 + shipping",
-        image: "/images/products/bidets/fixed_wall_bidet.png",
-        // image: "https://i.imgur.com/LNWIloE.png",
+        image: "https://i.imgur.com/TJGYKwi.png",
         description: "This is a stainless steel, chrome finish, wall mounted handheld bidet set.  Connect your hot and cold water line to our wall mounted bidet set from the water source going into your toilet.  It can withstand 10-15 pounds per square inch (psi) water pressure.<br><br>(Model: FF/2012/fwa.1)"
     },
     { name: "Elongated Sprayer Attachment Bidet",
         url: "elongated-sprayer-attachment-bidet",
         price: "USD $129.99 + shipping",
-        image: "/images/products/bidets/elongated_sprayer_bidet.png",
-        // image: "https://i.imgur.com/mF0IZWA.png",
+        image: "https://i.imgur.com/rqGzaeF.png",
         description: "This is a hot and cold attachment bidet set.  It's available in chrome finish.  It comes with a single control knob which regulates the water temperature and pressure.It can withstand 10-15 pounds per square inch (psi) water pressure.<br><br>(Model: FF/2012/esa.1)"
     },
     { name: "Toilet Sink Attachment Bidet",
         url: "toilet-sink-attachment-bidet",
         price: "USD $79.99 + shipping",
-        image: "/images/products/bidets/toilet_sink_bidet.png",
-        // image: "https://i.imgur.com/FG3j5O0.png",
+        image: "https://i.imgur.com/N4zB2i8.png",
         description: "This is a hot and cold attachment bidet set. It is easy to install.  It connects directly to your toilet sink faucet. It comes with a 1.5 meter flexible double lock hose. It can withstand 10-15 pounds per square inch (psi) water pressure.<br><br>(Model: FF/2012/tsa.1)"
     },
     { name: "Travel Portable Bidet",
         url: "travel-portable-bidet",
         price: "USD $15.00 (free shipping)",
-        image: "/images/products/bidets/travel_bidet.png",
-        // image: "https://i.imgur.com/zwbELiZ.png",
+        image: "https://i.imgur.com/DDSHHF2.png",
         description: "This is a 350ml extendable long nozzle spray travel portable .  It has an anti-flow air hole in the bottom of the portable bottle bidet. Very convenient when traveling. Discreet in size, easy to put in purses.  It comes with a simple kit.<br><br>(Model: FF/2012/ptb.1)"
     }
  ];
@@ -80,21 +75,80 @@ var lightsItemsData = [
     { name: "Toilet Bowl Night Light",
         url: "toilet-bowl-night-light",
         price: "USD $5 + shipping",
-        image: "/images/products/lights/toilet_bowl_light.png",
-        // image: "https://i.imgur.com/BRMNVc9.png",
+        image: "https://i.imgur.com/yMxcXhC.png",
         description: "This product is a motion activated cordless bathroom toilet night light. It transforms your toilet bowl into a night light with eight different colors rotating. It fits any toilet. It works best if the product sensor is placed facing the toilet door. The product operates with three AAA batteries (not included).<br><br>Model: FF/2012/btnl.1"
+    },
+    { name: "Faucet Led Light",
+        url: "faucet-led-light",
+        price: "",
+        image: "https://i.imgur.com/tX2ic5G.jpg",
+        description: "The device fits on most faucets and the led light, lights up when you turn on the tap. The lights are activated by water pressure."
+    },
+    { name: "Under The Bed Motion Sensor Night Light",
+        url: "under-the-bed-night-light",
+        price: "",
+        image: "https://i.imgur.com/ILWmQ77.jpg",
+        description: "It is a motion activated led night light hidden under the bed.  This is an awesome innovative product!"
+    },
+    { name: "Glowing Shoe Laces ",
+        url: "glowing-shoe-laces-light",
+        price: "",
+        image: "https://i.imgur.com/EM4VXyn.jpg",
+        description: "It glows in the dark shoe strings.  Very fashionable"
+    },
+    { name: "Portable Wireless Bluetooth Speaker",
+        url: "portable-wireless-bluetooth-speaker",
+        price: "",
+        image: "https://i.imgur.com/omBxgJu.jpg",
+        description: "This is a cool portable wireless bluetooth speaker.  Supports TF/AUX features."
     }
 ];
 
-var fabricsItemsData = [];
+var fabricsItemsData = [
+    { name: "Microfiber Sports Towel Fabric",
+        url: "microfiber-sports-towel-fabric",
+        price: "",
+        image: "https://i.imgur.com/C7XumqU.jpg",
+        description: "It is a plain dyed, eco-friendly, quick dry microfiber sports towel. It comes in different colors."
+    }
+];
 
 var noveltyItemsData = [
      { name: "Customized Hand-Held Fan",
         url: "customized-hand-held-fan",
         price: "USD $10.00 (free shipping)",
-        image: "/images/products/others/customized_fan.png",
-        // image: "https://i.imgur.com/nSCukii.png",
+        image: "https://i.imgur.com/JmxYQj2.png",
         description: "This is a personalized flashing led handheld battery fan.  It's an air cooling fan.  It comes with 3pcs AAA battery.<br><br>(Model: FF/2012/chf.1)"
+    },
+    { name: "Elastic Shoe Laces",
+        url: "elastic-shoe-laces-novelty",
+        price: "",
+        image: "https://i.imgur.com/PS1n2L4.jpg",
+        description: "Waterproof elastic shoe laces. It comes in different colors.  No more tying shoe laces!!!"
+    },
+    { name: "Plastic Hand Massager",
+        url: "plastic-hand-massager-novelty",
+        price: "",
+        image: "https://i.imgur.com/ypDoeaJ.jpg",
+        description: "This is a high quality, eco-friendly mini hand-held massager."
+    },
+    { name: "Hand Ball Massager",
+        url: "hand-ball-massager-novelty",
+        price: "",
+        image: "https://i.imgur.com/eYIQDUV.jpg",
+        description: "This is a hand ball massager.  It is great for deep muscle massage."
+    },
+    { name: "Portable Wireless Bluetooth Speaker",
+        url: "bluetooth-speaker-novelty",
+        price: "",
+        image: "https://i.imgur.com/omBxgJu.jpg",
+        description: "This is a portable, wireless bluetooth speaker. Different lights are displayed when music is played. Supports TF/AUX features."
+    },
+    { name: "Glowing Shoe Laces",
+        url: "glowing-shoe-laces",
+        price: "",
+        image: "https://i.imgur.com/EM4VXyn.jpg",
+        description: "It glows in the dark shoe strings.  Very fashionable."
     }
 ];
 
