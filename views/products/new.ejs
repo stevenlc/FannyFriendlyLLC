@@ -1,24 +1,39 @@
 <% include ../partials/header %>
 
+<!-- This is /products/new -->
+<!-- It has access to a single product, and renew boolean -->
+
+<% if (renew === undefined) { var renew = false; } else { if (renew) { %>
+<div class="text-center" id="flash-content-div">
+    <div class="alert alert-danger" role="alert">
+        The product URL you specified already exists. Please specify a new URL.
+        <%= product.name %>
+    </div>
+</div>
+<% } } %>
+
 <div class="container pt-5 mt-5">
     <h1>Add a New Product (Admin Only)</h1>
-    <form action="/products" method="POST">
+    <form id="new-form" action="/products" method="POST">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="name">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" name="product[name]" placeholder="e.g. Direct Attached Bidet">
+                <input type="text" class="form-control" id="name" name="product[name]" placeholder="e.g. Direct Attached Bidet" 
+                    <% if (renew) { %> value="<%= product.name %> <% } %>" required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="durl">Product Unique URL</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="url" name="product[url]" placeholder="e.g. direct-attached-bidet">
+                <input type="text" class="form-control" id="url" name="product[url]" placeholder="e.g. direct-attached-bidet"
+                    <% if (renew) { %> value="<%= product.url %> <% } %>" required>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label" for="image">Image</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="image" name="product[image]" placeholder="e.g. https://i.imgur.com/BRMNVc9.png">
+                <input type="text" class="form-control" id="image" name="product[image]" placeholder="e.g. https://i.imgur.com/BRMNVc9.png"
+                    <% if (renew) { %> value="<%= product.image %>" <% } %> >
             </div>
         </div>
         <div class="form-group row">

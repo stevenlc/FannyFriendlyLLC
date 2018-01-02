@@ -35,17 +35,33 @@ router.get("/:producturl", function(req, res) {
     });
 });
 
-// CREATE - new product form
+// CREATE - this is called when the Submit button is clicked on the New product form
 router.post("/", middleware.isLoggedIn, function(req, res) {
-    var newProduct = req.body.product;
-    Product.create(newProduct, function(err, product) {
+    // try to see if product url already exists
+    Product.findOne({ url: req.body.product.url }, function(err, product) {
         if (err || product === undefined) {
-            console.log(err);
-            res.redirect("back");
+            console.log(err); 
+        } else if (product === null) {
+            // this means the url does not already exist
+            // this is good
+            // create the product
+            Product.create(req.body.product, function(err, product) {
+                if (err || product === undefined) {
+                    console.log(err);
+                    res.redirect("back");
+                } else {
+                    console.log("Product " + product.name + " added.");
+                    req.flash("success", "You have successfully added a new product.");
+                    res.redirect("/products");
+                }
+            });
         } else {
-            console.log("Product " + product.name + " added.");
-            req.flash("success", "You have successfully added a new product.");
-            res.redirect("/products");
+            // this means the product url exists
+            // this is bad
+            // show error and tell user to change url
+            console.log("USER ERROR: The product URL already exists. It needs to be changed.");
+            console.log(req.body.product)
+            res.render("products/new", { product: req.body.product, renew: true});
         }
     });
 });

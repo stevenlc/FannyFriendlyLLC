@@ -37,19 +37,35 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
             console.log(err);
             res.redirect("back");
         } else {
-            // create new item
-            Item.create(req.body.item, function(err, item) {
-                if (err) {
+            // do a sanity check to see if the item url already exists
+            Item.findOne({ url: req.body.item.url }, function(err, item) {
+                if (err || item === undefined) {
                     console.log(err); 
+                } else if (item === null) {
+                    // this means the item url does not exist 
+                    // this is good.
+                    // create the item
+                    // create new item
+                    Item.create(req.body.item, function(err, item) {
+                        if (err) {
+                            console.log(err); 
+                        } else {
+                            // add item to product
+                            product.items.push(item);
+                            product.save();
+                            console.log("Item " + item.name + " added to " + product.name);
+                            console.log(item);
+                            req.flash("Successfully created item!");
+                            res.redirect("/products/" + product.url);
+                        } 
+                    });
                 } else {
-                    // add item to product
-                    product.items.push(item);
-                    product.save();
-                    console.log("Item " + item.name + " added to " + product.name);
-                    console.log(item);
-                    req.flash("Successfully created item!");
-                    res.redirect("/products/" + product.url);
-                } 
+                    // this means the item url exists
+                    // if so, this is bad.
+                    // redirect the user back and ask them to change it
+                    console.log("USER ERROR: The item URL already exists. It needs to be changed.");
+                    res.render("items/new", {  product: product, item: req.body.item, renew: true});
+                }
             });
         }
     });
