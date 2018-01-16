@@ -68,6 +68,12 @@ var bidetItemsData = [
         price: "USD $15.00 (free shipping)",
         image: "https://i.imgur.com/DDSHHF2.png",
         description: "This is a 350ml extendable long nozzle spray travel portable .  It has an anti-flow air hole in the bottom of the portable bottle bidet. Very convenient when traveling. Discreet in size, easy to put in purses.  It comes with a simple kit.<br><br>(Model: FF/2012/ptb.1)"
+    },
+    { name: "Wudu Acrylic Appliance",
+        url: "wudu-acrylic-appliance",
+        price: "",
+        image: "https://i.imgur.com/wxMrTcV.jpg",
+        description: ""
     }
  ];
 
@@ -149,6 +155,11 @@ var noveltyItemsData = [
         price: "",
         image: "https://i.imgur.com/EM4VXyn.jpg",
         description: "It glows in the dark shoe strings.  Very fashionable."
+    },
+    { name: "Hygienic long reach comfort wipe (bottom buddy)",
+        url: "hygienic-long-reach-comfort-wipe",
+        price: "",
+        image: "https://i.imgur.com/jjplQdQ.jpg"
     }
 ];
 
